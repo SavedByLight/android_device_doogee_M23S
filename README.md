@@ -1,2 +1,10 @@
-# android_device_doogee_M23S
-Doogee V31GT | Initial
+# Android device tree for DOOGEE V31GT (M23S)
+
+```
+#
+# Copyright (C) 2025 The Android Open Source Project
+# Copyright (C) 2025 SebaUbuntu's TWRP device tree generator
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+```
