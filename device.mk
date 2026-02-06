@@ -26,6 +26,11 @@ PRODUCT_PACKAGES += \
     bootctrl.mt6877 \
     bootctrl.mt6877.recovery
 
+# Health HAL
+PRODUCT_PACKAGES += \
+    android.hardware.health@2.1-impl \
+    android.hardware.health@2.1-service
+
 PRODUCT_PACKAGES += \
     otapreopt_script \
     cppreopts.sh \
