@@ -1,6 +1,9 @@
-/system                   ext4     system                               flags=display=system;logical;slotselect
-/vendor                   ext4     vendor                               flags=display=vendor;logical;slotselect
-/product                  ext4     product                              flags=display=product;logical;slotselect
+# Logical
+system /system ext4 ro wait,slotselect,avb=vbmeta_system,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey
+vendor /vendor ext4 ro wait,slotselect,avb,logical,first_stage_mount
+product /product ext4 ro wait,slotselect,avb,logical,first_stage_mount
+
+# Other
 /mnt/vendor/protect_f     ext4     /dev/block/by-name/protect1          flags=display=protect_f
 /mnt/vendor/protect_s     ext4     /dev/block/by-name/protect2          flags=display=protect_s
 /mnt/vendor/nvdata        ext4     /dev/block/by-name/nvdata            flags=display=nvdata
@@ -14,7 +17,6 @@ auto                      vfat     /devices/platform/usb0*              flags=di
 /bootloader               emmc     /dev/block/by-name/lk                flags=display=bootloader
 /bootloader2              emmc     /dev/block/by-name/lk2               flags=display=bootloader2
 /para                     emmc     /dev/block/by-name/para              flags=display=para
-/misc                     emmc     /dev/block/by-name/misc              flags=display=misc
 /boot                     emmc     /dev/block/by-name/boot              flags=display=boot;slotselect
 /vbmeta_vendor            emmc     /dev/block/by-name/vbmeta_vendor     flags=display=vbmeta_vendor;slotselect
 /vbmeta_system            emmc     /dev/block/by-name/vbmeta_system     flags=display=vbmeta_system;slotselect
@@ -52,3 +54,6 @@ auto                      vfat     /devices/platform/usb0*              flags=di
 # data
 /dev/block/by-name/metadata /metadata ext4 noatime,nosuid,nodev,discard wait,check,formattable,first_stage_mount
 /dev/block/by-name/userdata /data f2fs noatime,nosuid,nodev,discard,noflush_merge,fsync_mode=nobarrier,reserve_root=134217,resgid=1065,inlinecrypt wait,check,formattable,quota,reservedsize=128m,latemount,resize,checkpoint=fs,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,keydirectory=/metadata/vold/metadata_encryption,fsverity
+
+# Misc
+/dev/block/by-name/misc /misc emmc defaults defaults first_stage_mount
